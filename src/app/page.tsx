@@ -1,3 +1,5 @@
+"use client"
+
 import type { Metadata } from "next"
 import { AlertCircle, Check, ChevronsUpDown, CreditCard, Moon, Settings, Sun, User } from "lucide-react"
 
@@ -24,6 +26,8 @@ import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
+import { FontSelector } from "@/components/design-system/font-selector"
+import { useDesignSystem } from "@/context/design-system-context"
 
 // TypeScript interfaces for component props
 interface ComponentCardProps {
@@ -451,12 +455,9 @@ const atomComponents = [...typographyAndColors, ...components.filter(comp => com
 const moleculeComponents = components.filter(comp => comp.category === "molecule");
 const organismComponents = components.filter(comp => comp.category === "organism");
 
-export const metadata: Metadata = {
-  title: "Design System",
-  description: "A showcase of Shadcn UI components organized by atomic design principles",
-}
-
 export default function Home() {
+  const { setFont } = useDesignSystem()
+
   return (
     <div className="container mx-auto py-10 px-4">
       <div className="flex flex-col gap-4 mb-10 text-center">
@@ -466,63 +467,73 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Category Filter */}
-      <div className="mb-10">
-        <Tabs defaultValue="atom" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-3 mx-auto">
-            <TabsTrigger value="atom">Atoms</TabsTrigger>
-            <TabsTrigger value="molecule">Molecules</TabsTrigger>
-            <TabsTrigger value="organism">Organisms</TabsTrigger>
-          </TabsList>
-          
-          {/* Atoms */}
-          <TabsContent value="atom">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {atomComponents.map((comp, index) => (
-                <ComponentCard 
-                  key={index}
-                  title={comp.title} 
-                  description={comp.description}
-                  category={comp.category}
-                >
-                  {comp.component}
-                </ComponentCard>
-              ))}
-            </div>
-          </TabsContent>
-          
-          {/* Molecules */}
-          <TabsContent value="molecule">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {moleculeComponents.map((comp, index) => (
-                <ComponentCard 
-                  key={index}
-                  title={comp.title} 
-                  description={comp.description}
-                  category={comp.category}
-                >
-                  {comp.component}
-                </ComponentCard>
-              ))}
-            </div>
-          </TabsContent>
-          
-          {/* Organisms */}
-          <TabsContent value="organism">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {organismComponents.map((comp, index) => (
-                <ComponentCard 
-                  key={index}
-                  title={comp.title} 
-                  description={comp.description}
-                  category={comp.category}
-                >
-                  {comp.component}
-                </ComponentCard>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8">
+        {/* Left sidebar with controls */}
+        <div className="space-y-6">
+          <FontSelector onFontChange={setFont} />
+        </div>
+
+        {/* Right side with component showcase */}
+        <div>
+          {/* Category Filter */}
+          <div className="mb-10">
+            <Tabs defaultValue="atom" className="w-full">
+              <TabsList className="grid w-full max-w-md grid-cols-3 mx-auto">
+                <TabsTrigger value="atom">Atoms</TabsTrigger>
+                <TabsTrigger value="molecule">Molecules</TabsTrigger>
+                <TabsTrigger value="organism">Organisms</TabsTrigger>
+              </TabsList>
+              
+              {/* Atoms */}
+              <TabsContent value="atom">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
+                  {atomComponents.map((component, index) => (
+                    <ComponentCard
+                      key={index}
+                      title={component.title}
+                      description={component.description}
+                      category={component.category}
+                    >
+                      {component.component}
+                    </ComponentCard>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Molecules */}
+              <TabsContent value="molecule">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
+                  {moleculeComponents.map((component, index) => (
+                    <ComponentCard
+                      key={index}
+                      title={component.title}
+                      description={component.description}
+                      category={component.category}
+                    >
+                      {component.component}
+                    </ComponentCard>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Organisms */}
+              <TabsContent value="organism">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
+                  {organismComponents.map((component, index) => (
+                    <ComponentCard
+                      key={index}
+                      title={component.title}
+                      description={component.description}
+                      category={component.category}
+                    >
+                      {component.component}
+                    </ComponentCard>
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
       </div>
     </div>
   )

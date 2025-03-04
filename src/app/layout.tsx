@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { DesignSystemProvider } from '@/context/design-system-context'
 
 // Load Inter with multiple weights
 const inter = Inter({ 
@@ -21,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} font-inter`}>{children}</body>
+      <body className={`${inter.className}`}>
+        <DesignSystemProvider>
+          {children}
+        </DesignSystemProvider>
+      </body>
     </html>
   )
 } 
