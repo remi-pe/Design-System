@@ -46,12 +46,12 @@ const typographyAndColors = [
     component: (
       <div className="w-full space-y-6">
         <div>
-          <h1 className="text-4xl font-bold">Heading 1</h1>
-          <p className="text-sm text-muted-foreground">text-4xl font-bold</p>
+          <h1 className="text-4xl font-bold font-inter">Heading 1</h1>
+          <p className="text-sm text-muted-foreground">text-4xl font-bold font-inter</p>
         </div>
         <div>
-          <h2 className="text-3xl font-semibold">Heading 2</h2>
-          <p className="text-sm text-muted-foreground">text-3xl font-semibold</p>
+          <h2 className="text-3xl font-normal font-inter">Heading 2</h2>
+          <p className="text-sm text-muted-foreground">text-3xl font-normal font-inter</p>
         </div>
         <div>
           <h3 className="text-2xl font-semibold">Heading 3</h3>
