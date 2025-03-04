@@ -54,24 +54,24 @@ const typographyAndColors = [
           <p className="text-sm text-muted-foreground">text-3xl font-normal font-inter</p>
         </div>
         <div>
-          <h3 className="text-2xl font-semibold">Heading 3</h3>
-          <p className="text-sm text-muted-foreground">text-2xl font-semibold</p>
+          <h3 className="text-2xl font-medium font-inter">Heading 3</h3>
+          <p className="text-sm text-muted-foreground">text-2xl font-medium font-inter</p>
         </div>
         <div>
-          <h4 className="text-xl font-semibold">Heading 4</h4>
-          <p className="text-sm text-muted-foreground">text-xl font-semibold</p>
+          <h4 className="text-xl font-medium font-inter">Heading 4</h4>
+          <p className="text-sm text-muted-foreground">text-xl font-medium font-inter</p>
         </div>
         <div>
-          <p className="text-base">Base text - The quick brown fox jumps over the lazy dog.</p>
-          <p className="text-sm text-muted-foreground">text-base</p>
+          <p className="text-base font-inter">Base text - The quick brown fox jumps over the lazy dog.</p>
+          <p className="text-sm text-muted-foreground">text-base font-inter</p>
         </div>
         <div>
-          <p className="text-sm">Small text - The quick brown fox jumps over the lazy dog.</p>
-          <p className="text-sm text-muted-foreground">text-sm</p>
+          <p className="text-sm font-inter">Small text - The quick brown fox jumps over the lazy dog.</p>
+          <p className="text-sm text-muted-foreground">text-sm font-inter</p>
         </div>
         <div>
-          <p className="text-muted-foreground">Muted text - The quick brown fox jumps over the lazy dog.</p>
-          <p className="text-sm text-muted-foreground">text-muted-foreground</p>
+          <p className="text-muted-foreground font-inter">Muted text - The quick brown fox jumps over the lazy dog.</p>
+          <p className="text-sm text-muted-foreground">text-muted-foreground font-inter</p>
         </div>
       </div>
     ),
