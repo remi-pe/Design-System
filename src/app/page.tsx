@@ -41,44 +41,50 @@ interface ComponentCardProps {
 type ComponentCategory = "atom" | "molecule" | "organism";
 
 // Typography and Colors components
+const TypographyComponent = () => {
+  const { font } = useDesignSystem();
+  
+  return (
+    <div className="w-full space-y-6">
+      <div>
+        <h1 className="text-4xl font-bold">Heading 1</h1>
+        <p className="text-sm text-muted-foreground">text-4xl font-bold ({font})</p>
+      </div>
+      <div>
+        <h2 className="text-3xl font-normal">Heading 2</h2>
+        <p className="text-sm text-muted-foreground">text-3xl font-normal ({font})</p>
+      </div>
+      <div>
+        <h3 className="text-2xl font-medium">Heading 3</h3>
+        <p className="text-sm text-muted-foreground">text-2xl font-medium ({font})</p>
+      </div>
+      <div>
+        <h4 className="text-xl font-medium">Heading 4</h4>
+        <p className="text-sm text-muted-foreground">text-xl font-medium ({font})</p>
+      </div>
+      <div>
+        <p className="text-base">Base text - The quick brown fox jumps over the lazy dog.</p>
+        <p className="text-sm text-muted-foreground">text-base ({font})</p>
+      </div>
+      <div>
+        <p className="text-sm">Small text - The quick brown fox jumps over the lazy dog.</p>
+        <p className="text-sm text-muted-foreground">text-sm ({font})</p>
+      </div>
+      <div>
+        <p className="text-muted-foreground">Muted text - The quick brown fox jumps over the lazy dog.</p>
+        <p className="text-sm text-muted-foreground">text-muted-foreground ({font})</p>
+      </div>
+    </div>
+  );
+};
+
 const typographyAndColors = [
   // Typography
   {
     title: "Typography",
     description: "Font styles used throughout the design system.",
     category: "atom" as ComponentCategory,
-    component: (
-      <div className="w-full space-y-6">
-        <div>
-          <h1 className="text-4xl font-bold font-inter">Heading 1</h1>
-          <p className="text-sm text-muted-foreground">text-4xl font-bold font-inter</p>
-        </div>
-        <div>
-          <h2 className="text-3xl font-normal font-inter">Heading 2</h2>
-          <p className="text-sm text-muted-foreground">text-3xl font-normal font-inter</p>
-        </div>
-        <div>
-          <h3 className="text-2xl font-medium font-inter">Heading 3</h3>
-          <p className="text-sm text-muted-foreground">text-2xl font-medium font-inter</p>
-        </div>
-        <div>
-          <h4 className="text-xl font-medium font-inter">Heading 4</h4>
-          <p className="text-sm text-muted-foreground">text-xl font-medium font-inter</p>
-        </div>
-        <div>
-          <p className="text-base font-inter">Base text - The quick brown fox jumps over the lazy dog.</p>
-          <p className="text-sm text-muted-foreground">text-base font-inter</p>
-        </div>
-        <div>
-          <p className="text-sm font-inter">Small text - The quick brown fox jumps over the lazy dog.</p>
-          <p className="text-sm text-muted-foreground">text-sm font-inter</p>
-        </div>
-        <div>
-          <p className="text-muted-foreground font-inter">Muted text - The quick brown fox jumps over the lazy dog.</p>
-          <p className="text-sm text-muted-foreground">text-muted-foreground font-inter</p>
-        </div>
-      </div>
-    ),
+    component: <TypographyComponent />,
   },
   // Colors
   {
@@ -567,7 +573,9 @@ function ComponentCard({ title, description, children, category }: ComponentCard
             {categoryLabels[category]}
           </span>
         </div>
-        <div className="flex items-center justify-center py-4">{children}</div>
+        <div className="pt-4 border-t">
+          {children}
+        </div>
       </div>
     </div>
   )

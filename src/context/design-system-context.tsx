@@ -19,9 +19,12 @@ export function DesignSystemProvider({ children }: { children: ReactNode }) {
 
     // Create a link element for the Google Font
     const link = document.createElement("link")
-    link.href = `https://fonts.googleapis.com/css2?family=${font.replace(" ", "+")}&display=swap`
+    link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, "+")}&display=swap`
     link.rel = "stylesheet"
     document.head.appendChild(link)
+
+    // Update CSS variable for the font
+    document.documentElement.style.setProperty('--font-family', `"${font}", sans-serif`)
 
     return () => {
       // Clean up the link when the font changes
@@ -29,12 +32,14 @@ export function DesignSystemProvider({ children }: { children: ReactNode }) {
     }
   }, [font])
 
+  // Set the initial CSS variable
+  useEffect(() => {
+    document.documentElement.style.setProperty('--font-family', `"${font}", sans-serif`)
+  }, [])
+
   return (
     <DesignSystemContext.Provider value={{ font, setFont }}>
-      <div style={{ 
-        // Apply the font to all children
-        fontFamily: `"${font}", sans-serif` 
-      }}>
+      <div className="design-system-root">
         {children}
       </div>
     </DesignSystemContext.Provider>
