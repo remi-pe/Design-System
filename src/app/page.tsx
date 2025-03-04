@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { AlertCircle, ChevronsUpDown, CreditCard, Moon, Settings, Sun, User } from "lucide-react"
+import { AlertCircle, Check, ChevronsUpDown, CreditCard, Moon, Settings, Sun, User } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -13,6 +13,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // TypeScript interfaces for component props
 interface ComponentCardProps {
@@ -110,6 +115,103 @@ export default function Home() {
               <p>Card Footer</p>
             </CardFooter>
           </Card>
+        </ComponentCard>
+
+        {/* Checkbox */}
+        <ComponentCard
+          title="Checkbox"
+          description="A control that allows the user to toggle between checked and not checked."
+        >
+          <div className="flex items-center space-x-2">
+            <Checkbox id="terms" />
+            <label
+              htmlFor="terms"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Accept terms and conditions
+            </label>
+          </div>
+        </ComponentCard>
+
+        {/* Input */}
+        <ComponentCard
+          title="Input"
+          description="Displays a form input field or a component that looks like an input field."
+        >
+          <Input placeholder="Email" type="email" className="w-full max-w-xs" />
+        </ComponentCard>
+
+        {/* Label */}
+        <ComponentCard 
+          title="Label" 
+          description="Renders an accessible label associated with controls."
+        >
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="email">Email</Label>
+            <Input type="email" id="email" placeholder="Email" />
+          </div>
+        </ComponentCard>
+
+        {/* Switch */}
+        <ComponentCard
+          title="Switch"
+          description="A control that allows the user to toggle between checked and not checked."
+        >
+          <div className="flex items-center space-x-2">
+            <Switch id="airplane-mode" />
+            <Label htmlFor="airplane-mode">Airplane Mode</Label>
+          </div>
+        </ComponentCard>
+
+        {/* Tabs */}
+        <ComponentCard
+          title="Tabs"
+          description="A set of layered sections of content—known as tab panels—that display one panel at a time."
+        >
+          <Tabs defaultValue="account" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="account">Account</TabsTrigger>
+              <TabsTrigger value="password">Password</TabsTrigger>
+            </TabsList>
+            <TabsContent value="account">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Account</CardTitle>
+                  <CardDescription>Make changes to your account here.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" defaultValue="John Doe" />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button>Save changes</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+            <TabsContent value="password">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Password</CardTitle>
+                  <CardDescription>Change your password here.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="current">Current password</Label>
+                    <Input id="current" type="password" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="new">New password</Label>
+                    <Input id="new" type="password" />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button>Save password</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </ComponentCard>
       </div>
     </div>
