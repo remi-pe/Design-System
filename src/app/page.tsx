@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { AlertCircle, Check, ChevronsUpDown, CreditCard, Moon, Settings, Sun, User } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -16,8 +17,13 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
+import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton"
+import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Textarea } from "@/components/ui/textarea"
 
 // TypeScript interfaces for component props
 interface ComponentCardProps {
@@ -52,6 +58,20 @@ export default function Home() {
             <AlertTitle>Heads up!</AlertTitle>
             <AlertDescription>You can add components to your app using the CLI.</AlertDescription>
           </Alert>
+        </ComponentCard>
+
+        {/* Aspect Ratio */}
+        <ComponentCard 
+          title="Aspect Ratio" 
+          description="Displays content within a desired ratio."
+        >
+          <div className="w-full">
+            <AspectRatio ratio={16 / 9}>
+              <div className="flex h-full w-full items-center justify-center bg-muted rounded-md">
+                16:9 Aspect Ratio
+              </div>
+            </AspectRatio>
+          </div>
         </ComponentCard>
 
         {/* Avatar */}
@@ -152,6 +172,55 @@ export default function Home() {
           </div>
         </ComponentCard>
 
+        {/* Progress */}
+        <ComponentCard 
+          title="Progress" 
+          description="Displays an indicator showing the completion progress of a task."
+        >
+          <Progress value={60} className="w-full" />
+        </ComponentCard>
+
+        {/* Separator */}
+        <ComponentCard 
+          title="Separator" 
+          description="Visually or semantically separates content."
+        >
+          <div className="space-y-1">
+            <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
+            <p className="text-sm text-muted-foreground">An open-source UI component library.</p>
+            <Separator className="my-4" />
+            <div className="flex h-5 items-center space-x-4 text-sm">
+              <div>Blog</div>
+              <Separator orientation="vertical" />
+              <div>Docs</div>
+              <Separator orientation="vertical" />
+              <div>Source</div>
+            </div>
+          </div>
+        </ComponentCard>
+
+        {/* Skeleton */}
+        <ComponentCard 
+          title="Skeleton" 
+          description="Used to show a placeholder while content is loading."
+        >
+          <div className="flex items-center space-x-4">
+            <Skeleton className="h-12 w-12 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-[250px]" />
+              <Skeleton className="h-4 w-[200px]" />
+            </div>
+          </div>
+        </ComponentCard>
+
+        {/* Slider */}
+        <ComponentCard 
+          title="Slider" 
+          description="An input where the user selects a value from within a given range."
+        >
+          <Slider defaultValue={[50]} max={100} step={1} className="w-full" />
+        </ComponentCard>
+
         {/* Switch */}
         <ComponentCard
           title="Switch"
@@ -212,6 +281,29 @@ export default function Home() {
               </Card>
             </TabsContent>
           </Tabs>
+        </ComponentCard>
+
+        {/* Textarea */}
+        <ComponentCard
+          title="Textarea"
+          description="Displays a form textarea or a component that looks like a textarea."
+        >
+          <Textarea placeholder="Type your message here." className="w-full max-w-xs" />
+        </ComponentCard>
+
+        {/* Toggle */}
+        <ComponentCard 
+          title="Toggle" 
+          description="A two-state button that can be either on or off."
+        >
+          <div className="flex gap-2">
+            <Button variant="outline" size="icon" className="h-10 w-10 rounded-full">
+              <Sun className="h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="icon" className="h-10 w-10 rounded-full">
+              <Moon className="h-4 w-4" />
+            </Button>
+          </div>
         </ComponentCard>
       </div>
     </div>
