@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { useState } from "react"
 import { AlertCircle, Check, ChevronsUpDown, CreditCard, Moon, Settings, Sun, User } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -36,6 +35,149 @@ interface ComponentCardProps {
 
 // Component categories based on atomic design
 type ComponentCategory = "atom" | "molecule" | "organism";
+
+// Typography and Colors components
+const typographyAndColors = [
+  // Typography
+  {
+    title: "Typography",
+    description: "Font styles used throughout the design system.",
+    category: "atom" as ComponentCategory,
+    component: (
+      <div className="w-full space-y-6">
+        <div>
+          <h1 className="text-4xl font-bold">Heading 1</h1>
+          <p className="text-sm text-muted-foreground">text-4xl font-bold</p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold">Heading 2</h2>
+          <p className="text-sm text-muted-foreground">text-3xl font-semibold</p>
+        </div>
+        <div>
+          <h3 className="text-2xl font-semibold">Heading 3</h3>
+          <p className="text-sm text-muted-foreground">text-2xl font-semibold</p>
+        </div>
+        <div>
+          <h4 className="text-xl font-semibold">Heading 4</h4>
+          <p className="text-sm text-muted-foreground">text-xl font-semibold</p>
+        </div>
+        <div>
+          <p className="text-base">Base text - The quick brown fox jumps over the lazy dog.</p>
+          <p className="text-sm text-muted-foreground">text-base</p>
+        </div>
+        <div>
+          <p className="text-sm">Small text - The quick brown fox jumps over the lazy dog.</p>
+          <p className="text-sm text-muted-foreground">text-sm</p>
+        </div>
+        <div>
+          <p className="text-muted-foreground">Muted text - The quick brown fox jumps over the lazy dog.</p>
+          <p className="text-sm text-muted-foreground">text-muted-foreground</p>
+        </div>
+      </div>
+    ),
+  },
+  // Colors
+  {
+    title: "Colors",
+    description: "Color palette used throughout the design system.",
+    category: "atom" as ComponentCategory,
+    component: (
+      <div className="w-full space-y-6">
+        <div className="space-y-2">
+          <p className="font-medium">Primary</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-primary"></div>
+              <p className="text-xs mt-1">primary</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-primary-foreground"></div>
+              <p className="text-xs mt-1">foreground</p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-medium">Secondary</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-secondary"></div>
+              <p className="text-xs mt-1">secondary</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-secondary-foreground"></div>
+              <p className="text-xs mt-1">foreground</p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-medium">Accent</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-accent"></div>
+              <p className="text-xs mt-1">accent</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-accent-foreground"></div>
+              <p className="text-xs mt-1">foreground</p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-medium">Destructive</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-destructive"></div>
+              <p className="text-xs mt-1">destructive</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-destructive-foreground"></div>
+              <p className="text-xs mt-1">foreground</p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-medium">Muted</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-muted"></div>
+              <p className="text-xs mt-1">muted</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-muted-foreground"></div>
+              <p className="text-xs mt-1">foreground</p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-medium">Card</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-card"></div>
+              <p className="text-xs mt-1">card</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-card-foreground"></div>
+              <p className="text-xs mt-1">foreground</p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-medium">Background & Border</p>
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-background border"></div>
+              <p className="text-xs mt-1">background</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="h-10 w-10 rounded-full bg-border"></div>
+              <p className="text-xs mt-1">border</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+];
 
 // Component definitions with metadata
 const components = [
@@ -304,35 +446,39 @@ const components = [
   },
 ];
 
+// Combine typography/colors with other components
+const atomComponents = [...typographyAndColors, ...components.filter(comp => comp.category === "atom")];
+const moleculeComponents = components.filter(comp => comp.category === "molecule");
+const organismComponents = components.filter(comp => comp.category === "organism");
+
 export const metadata: Metadata = {
-  title: "Shadcn UI Components Showcase",
+  title: "Design System",
   description: "A showcase of Shadcn UI components organized by atomic design principles",
 }
 
 export default function Home() {
   return (
     <div className="container mx-auto py-10 px-4">
-      <div className="flex flex-col gap-4 mb-10">
-        <h1 className="text-4xl font-bold">Shadcn UI Components Showcase</h1>
+      <div className="flex flex-col gap-4 mb-10 text-center">
+        <h1 className="text-5xl font-bold">Design System</h1>
         <p className="text-muted-foreground text-lg">
-          A showcase of Shadcn UI components organized by atomic design principles
+          A showcase of UI components organized by atomic design principles
         </p>
       </div>
 
       {/* Category Filter */}
       <div className="mb-10">
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-4">
-            <TabsTrigger value="all">All</TabsTrigger>
+        <Tabs defaultValue="atom" className="w-full">
+          <TabsList className="grid w-full max-w-md grid-cols-3 mx-auto">
             <TabsTrigger value="atom">Atoms</TabsTrigger>
             <TabsTrigger value="molecule">Molecules</TabsTrigger>
             <TabsTrigger value="organism">Organisms</TabsTrigger>
           </TabsList>
           
-          {/* All Components */}
-          <TabsContent value="all">
+          {/* Atoms */}
+          <TabsContent value="atom">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {components.map((comp, index) => (
+              {atomComponents.map((comp, index) => (
                 <ComponentCard 
                   key={index}
                   title={comp.title} 
@@ -345,60 +491,35 @@ export default function Home() {
             </div>
           </TabsContent>
           
-          {/* Atoms */}
-          <TabsContent value="atom">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {components
-                .filter(comp => comp.category === "atom")
-                .map((comp, index) => (
-                  <ComponentCard 
-                    key={index}
-                    title={comp.title} 
-                    description={comp.description}
-                    category={comp.category}
-                  >
-                    {comp.component}
-                  </ComponentCard>
-                ))
-              }
-            </div>
-          </TabsContent>
-          
           {/* Molecules */}
           <TabsContent value="molecule">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {components
-                .filter(comp => comp.category === "molecule")
-                .map((comp, index) => (
-                  <ComponentCard 
-                    key={index}
-                    title={comp.title} 
-                    description={comp.description}
-                    category={comp.category}
-                  >
-                    {comp.component}
-                  </ComponentCard>
-                ))
-              }
+              {moleculeComponents.map((comp, index) => (
+                <ComponentCard 
+                  key={index}
+                  title={comp.title} 
+                  description={comp.description}
+                  category={comp.category}
+                >
+                  {comp.component}
+                </ComponentCard>
+              ))}
             </div>
           </TabsContent>
           
           {/* Organisms */}
           <TabsContent value="organism">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6">
-              {components
-                .filter(comp => comp.category === "organism")
-                .map((comp, index) => (
-                  <ComponentCard 
-                    key={index}
-                    title={comp.title} 
-                    description={comp.description}
-                    category={comp.category}
-                  >
-                    {comp.component}
-                  </ComponentCard>
-                ))
-              }
+              {organismComponents.map((comp, index) => (
+                <ComponentCard 
+                  key={index}
+                  title={comp.title} 
+                  description={comp.description}
+                  category={comp.category}
+                >
+                  {comp.component}
+                </ComponentCard>
+              ))}
             </div>
           </TabsContent>
         </Tabs>
