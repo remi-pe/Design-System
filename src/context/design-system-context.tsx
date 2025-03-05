@@ -3,42 +3,59 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react"
 
 interface DesignSystemContextType {
-  font: string
-  setFont: (font: string) => void
+  headerFont: string
+  bodyFont: string
+  setHeaderFont: (font: string) => void
+  setBodyFont: (font: string) => void
 }
 
 const DesignSystemContext = createContext<DesignSystemContextType | undefined>(undefined)
 
 export function DesignSystemProvider({ children }: { children: ReactNode }) {
-  const [font, setFont] = useState("Inter")
+  const [headerFont, setHeaderFont] = useState("Inter")
+  const [bodyFont, setBodyFont] = useState("Inter")
 
-  // Load Google Fonts dynamically when the font changes
+  // Load Google Fonts dynamically when fonts change
   useEffect(() => {
-    // Skip if font is already Inter (default)
-    if (font === "Inter") return
-
-    // Create a link element for the Google Font
-    const link = document.createElement("link")
-    link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, "+")}&display=swap`
-    link.rel = "stylesheet"
-    document.head.appendChild(link)
-
-    // Update CSS variable for the font
-    document.documentElement.style.setProperty('--font-family', `"${font}", sans-serif`)
+    const loadFont = (font: string) => {
+      // Skip if font is already Inter (default)
+      if (font === "Inter") return null
+      
+      // Create a link element for the Google Font
+      const link = document.createElement("link")
+      link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, "+")}&display=swap`
+      link.rel = "stylesheet"
+      document.head.appendChild(link)
+      return link
+    }
+    
+    const headerLink = loadFont(headerFont)
+    const bodyLink = loadFont(bodyFont)
+    
+    // Update CSS variables for the fonts
+    document.documentElement.style.setProperty('--header-font', `"${headerFont}", sans-serif`)
+    document.documentElement.style.setProperty('--body-font', `"${bodyFont}", sans-serif`)
 
     return () => {
-      // Clean up the link when the font changes
-      document.head.removeChild(link)
+      // Clean up the links when the fonts change
+      if (headerLink) document.head.removeChild(headerLink)
+      if (bodyLink) document.head.removeChild(bodyLink)
     }
-  }, [font])
+  }, [headerFont, bodyFont])
 
-  // Set the initial CSS variable
+  // Set the initial CSS variables
   useEffect(() => {
-    document.documentElement.style.setProperty('--font-family', `"${font}", sans-serif`)
+    document.documentElement.style.setProperty('--header-font', `"${headerFont}", sans-serif`)
+    document.documentElement.style.setProperty('--body-font', `"${bodyFont}", sans-serif`)
   }, [])
 
   return (
-    <DesignSystemContext.Provider value={{ font, setFont }}>
+    <DesignSystemContext.Provider value={{ 
+      headerFont, 
+      bodyFont, 
+      setHeaderFont, 
+      setBodyFont 
+    }}>
       <div className="design-system-root">
         {children}
       </div>

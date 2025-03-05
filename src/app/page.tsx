@@ -43,37 +43,37 @@ type ComponentCategory = "atom" | "molecule" | "organism";
 
 // Typography and Colors components
 const TypographyComponent = () => {
-  const { font } = useDesignSystem();
+  const { headerFont, bodyFont } = useDesignSystem();
   
   return (
     <div className="w-full space-y-6">
       <div>
         <h1 className="text-4xl font-bold">Heading 1</h1>
-        <p className="text-sm text-muted-foreground">text-4xl font-bold ({font})</p>
+        <p className="text-sm text-muted-foreground">text-4xl font-bold ({headerFont})</p>
       </div>
       <div>
         <h2 className="text-3xl font-normal">Heading 2</h2>
-        <p className="text-sm text-muted-foreground">text-3xl font-normal ({font})</p>
+        <p className="text-sm text-muted-foreground">text-3xl font-normal ({headerFont})</p>
       </div>
       <div>
         <h3 className="text-2xl font-medium">Heading 3</h3>
-        <p className="text-sm text-muted-foreground">text-2xl font-medium ({font})</p>
+        <p className="text-sm text-muted-foreground">text-2xl font-medium ({headerFont})</p>
       </div>
       <div>
         <h4 className="text-xl font-medium">Heading 4</h4>
-        <p className="text-sm text-muted-foreground">text-xl font-medium ({font})</p>
+        <p className="text-sm text-muted-foreground">text-xl font-medium ({headerFont})</p>
       </div>
       <div>
         <p className="text-base">Base text - The quick brown fox jumps over the lazy dog.</p>
-        <p className="text-sm text-muted-foreground">text-base ({font})</p>
+        <p className="text-sm text-muted-foreground">text-base ({bodyFont})</p>
       </div>
       <div>
         <p className="text-sm">Small text - The quick brown fox jumps over the lazy dog.</p>
-        <p className="text-sm text-muted-foreground">text-sm ({font})</p>
+        <p className="text-sm text-muted-foreground">text-sm ({bodyFont})</p>
       </div>
       <div>
         <p className="text-muted-foreground">Muted text - The quick brown fox jumps over the lazy dog.</p>
-        <p className="text-sm text-muted-foreground">text-muted-foreground ({font})</p>
+        <p className="text-sm text-muted-foreground">text-muted-foreground ({bodyFont})</p>
       </div>
     </div>
   );
@@ -463,8 +463,6 @@ const moleculeComponents = components.filter(comp => comp.category === "molecule
 const organismComponents = components.filter(comp => comp.category === "organism");
 
 export default function Home() {
-  const { setFont } = useDesignSystem()
-
   return (
     <div className="container mx-auto py-10 px-4">
       <div className="flex justify-between items-center mb-10">
@@ -475,7 +473,7 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8">
         {/* Left sidebar with controls */}
         <div className="space-y-6">
-          <FontSelector onFontChange={setFont} />
+          <FontSelector />
         </div>
 
         {/* Right side with component showcase */}
