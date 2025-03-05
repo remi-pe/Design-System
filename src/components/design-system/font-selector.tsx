@@ -34,10 +34,7 @@ export function FontSelector({ onFontChange }: FontSelectorProps) {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Design System Controls</CardTitle>
-        <CardDescription>
-          Customize the appearance of your design system
-        </CardDescription>
+        <CardTitle>Controls</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { DesignSystemProvider } from '@/context/design-system-context'
+import { ThemeProvider } from '@/components/theme-provider'
 
 // Load Inter with multiple weights
 const inter = Inter({ 
@@ -21,11 +22,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
-        <DesignSystemProvider>
-          {children}
-        </DesignSystemProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <DesignSystemProvider>
+            {children}
+          </DesignSystemProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

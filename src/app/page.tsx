@@ -27,6 +27,7 @@ import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { FontSelector } from "@/components/design-system/font-selector"
+import { ThemeToggle } from "@/components/design-system/theme-toggle"
 import { useDesignSystem } from "@/context/design-system-context"
 
 // TypeScript interfaces for component props
@@ -466,11 +467,9 @@ export default function Home() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <div className="flex flex-col gap-4 mb-10 text-center">
-        <h1 className="text-5xl font-bold">Design System</h1>
-        <p className="text-muted-foreground text-lg">
-          A showcase of UI components organized by atomic design principles
-        </p>
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-5xl font-bold text-left">Design System</h1>
+        <ThemeToggle />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8">
